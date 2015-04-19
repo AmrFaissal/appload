@@ -1,0 +1,46 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title%}Appload{% endblock title%}</title>
+		{% block styling %}
+		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+		{% endblock styling %}
+	</head>
+
+	<body>
+		<div class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="{% url 'main.views.home' %}">Home</a>
+				</div>
+				<ul class="nav navbar-nav">
+				   <li><a href="{% url 'main.views.new_app' %}">New App</a></li>
+				</ul>
+			
+				<ul class="nav navbar-nav navbar-right">
+				  <li><a href="{% url 'main.views.list' %}">Apps</a></li>	
+				</ul>
+			</div>
+		</div>
+
+		<div class="container">
+		   <div class="jumbotron">
+                      <h1>Welcome</h1>
+                      <p>Welcome to <b>Appload</b> where you can manage all of your Apps</p>
+                      <p style="margin-top: 1em">
+                       <a href="{% url 'main.views.list' %}">Take me to Apps list</a> 
+					or <a href="{% url 'main.views.new_app' %}">Create a new App</a>
+                      </p>
+                   </div>
+		</div>
+
+		{% block javascript %}
+                   <script src="{% static 'jquery-1.10.2.min.js' %}"></script>
+                   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+               	{% endblock javascript %}
+	</body>
+</html>
+	

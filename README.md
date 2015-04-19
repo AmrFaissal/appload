@@ -1,5 +1,5 @@
 # appload
-Manage all of your Apps using Appload.
+Manage all of your Apps in a simple way!
 
 Created using :
 * Python 3

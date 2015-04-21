@@ -5,11 +5,15 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'main.views.home'),
-    url(r'^list$', 'main.views.list'),
-    url(r'app/new/$', 'main.views.new_app', name='new_app'),
-    url(r'app/edit/(?P<pk>[0-9]+)/$', 'main.views.edit', name="edit"),
-    url(r'app/delete/(?P<pk>[0-9]+)/$', 'main.views.delete', name="delete")
+    url(r'^admin/', include(admin.site.urls))
+)
+
+urlpatterns += patterns(
+    'main.views',
+    url(r'^$', 'home'),
+    url(r'^list$', 'list'),
+    url(r'app/new/$', 'new_app'),
+    url(r'app/edit/(?P<pk>[0-9]+)/$', 'edit'),
+    url(r'app/delete/(?P<pk>[0-9]+)/$', 'delete')
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
